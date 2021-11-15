@@ -1,6 +1,6 @@
 body {
   font-family: "Sora", sans-serif;
-  font-weight: lighter;
+  font-weight: 300;
   overflow-x: hidden;
 }
 .navbar-brand {
@@ -67,7 +67,9 @@ main {
 .section3 h1 {
   padding-top: 50px;
 }
-
+.section3 p {
+  font-weight: 300;
+}
 .section3 img {
   border-radius: 10px;
 }
@@ -78,9 +80,16 @@ main {
   padding-top: 30px;
   padding-bottom: 70px;
 }
+
+.section5 {
+  background-color: #d8dcd6;
+  padding: 70px 0;
+}
+.section5 h1 {
+  font-size: 30px;
+}
 footer {
   height: 80px;
-  background-color: #d8dcd6;
 }
 footer .line {
   height: 4px;
@@ -95,4 +104,7 @@ footer ul {
 footer ul li:hover {
   color: #ec5538;
   cursor: pointer;
+}
+footer h6 {
+  font-weight: 300;
 }
