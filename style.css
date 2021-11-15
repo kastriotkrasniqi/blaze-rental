@@ -1,0 +1,98 @@
+body {
+  font-family: "Sora", sans-serif;
+  font-weight: lighter;
+  overflow-x: hidden;
+}
+.navbar-brand {
+  font-family: "Black Ops One", cursive;
+}
+
+.active {
+  background-color: #ec5538;
+  border-radius: 5px;
+}
+
+.nav-link:hover:not(.active) {
+  color: #ec5538 !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.btn:hover {
+  color: #ec5538;
+  border-color: #ec5538;
+}
+main {
+  height: calc(100vh - 72px);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./img/background.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#title {
+  font-size: 4rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+}
+.section1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+  width: 100vw;
+  background-color: #fafafa;
+}
+
+.section1 .container {
+  color: #4e4e4e;
+}
+
+.section2 {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url(./img/handing-over-rental-key-5c24517fc9e77c0001ad9a26.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 500px;
+  width: 100vw;
+}
+
+.section3 {
+  background-color: #d8dcd6;
+  color: #4e4e4e;
+  padding-bottom: 40px;
+}
+.section3 h1 {
+  padding-top: 50px;
+}
+
+.section3 img {
+  border-radius: 10px;
+}
+.section3 .row {
+  margin-top: 30px;
+}
+.section4 {
+  padding-top: 30px;
+  padding-bottom: 70px;
+}
+footer {
+  height: 80px;
+  background-color: #d8dcd6;
+}
+footer .line {
+  height: 4px;
+  width: 100vw;
+  background-color: #ec5538;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+footer ul li:hover {
+  color: #ec5538;
+  cursor: pointer;
+}
