@@ -1,8 +1,8 @@
 body {
   font-family: "Sora", sans-serif;
   font-weight: 300;
-  overflow-x: hidden;
 }
+
 .navbar-brand {
   font-family: "Black Ops One", cursive;
 }
@@ -27,7 +27,7 @@ body {
 main {
   height: calc(100vh - 72px);
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(./img/background.jpg);
+    url(../img/background.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -52,7 +52,7 @@ main {
 
 .section2 {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url(./img/handing-over-rental-key-5c24517fc9e77c0001ad9a26.jpg);
+    url(../img/handing-over-rental-key-5c24517fc9e77c0001ad9a26.jpg);
   background-repeat: no-repeat;
   background-position: center center;
   height: 500px;

@@ -1,0 +1,23 @@
+.banner {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url(../img/banner.jpg);
+  height: 250px;
+  width: 100vw;
+  background-repeat: no-repeat;
+  background-position: 50% 55%;
+}
+.banner .container {
+  display: flex;
+  justify-content: center;
+}
+.banner h1 {
+  padding-top: 100px !important;
+}
+table thead,
+tfoot {
+  background-color: #ff8764;
+}
+.titulli {
+  color: #ec5538;
+  border-bottom: 3px solid #ec5538;
+}
