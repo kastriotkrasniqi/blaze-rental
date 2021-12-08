@@ -28,6 +28,17 @@
     <title>Document</title>
 </head>
 
+<?php 
+                        if(isset($_GET['klientiid'])){
+                            $klientiid=$_GET['klientiid'];
+                            
+                            fshiKlient($klientiid);
+                        }
+                
+                
+                
+                ?>
+
 <body>
     <!-- ========== Start header ========== -->
     <?php include './includes/header.php'; ?>
@@ -75,10 +86,12 @@
                     <td><?php echo $row['telefoni'] ?></td>
                     <td><?php echo $row['adresa'] ?></td>
 
-                    <td class="text-center"><a href="" class="btn text-light btn-warning btn-sm  px-3"><i
-                                class="far fa-edit"></i></a>
+                    <td class="text-center"><a href="shtoModifiko_Klient.php?klientiid=<?php echo $row['klientiid']; ?>"
+                            class="btn text-light btn-warning btn-sm  px-3"><i class="far fa-edit"></i></a>
                     </td>
-                    <td class="text-center"> <a type="button" class="btn btn-danger btn-sm px-3">
+                    <td class="text-center"> <a onclick="return confirm('Confirm the deletion?')"
+                            href="?klientiid=<?php echo $row['klientiid']; ?>" type="button"
+                            class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>
                         </a></td>
 
@@ -88,7 +101,8 @@
             </tbody>
 
         </table>
-        <a href="" id="shtoklient" class="btn px-3 float-end"><i class="fas fa-user-plus"></i> Shto Klient</a>
+        <a href="shtoModifiko_Klient.php" id="shtoklient" class="btn px-3 float-end"><i class="fas fa-user-plus"></i>
+            Shto Klient</a>
     </div>
     <!-- ========== End tabela ========== -->
     <!-- ========== Start footer ========== -->

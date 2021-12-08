@@ -27,6 +27,18 @@
     </style>
     <title>Document</title>
 </head>
+<?php 
+                
+                    if(isset($_GET['rezervimiid'])){
+                        $rezervimiid=$_GET['rezervimiid'];
+                        fshiRezervimet($rezervimiid);
+                    }
+                
+                
+                
+                
+                
+                ?>
 
 <body>
     <!-- ========== Start header ========== -->
@@ -63,22 +75,26 @@
 
                 </tr>
             </thead>
-            <?php $result=merrKlientet(); $i=1; ?>
+            <?php $rezervimet = merrRezervimetId($_SESSION['klientiid']); $i=1;  ?>
+
+
             <tbody>
-                <?php while($row=mysqli_fetch_assoc($result)): ?>
+                <?php while ($row = mysqli_fetch_assoc($rezervimet))  : ?>
                 <tr>
                     <th scope="row"><?php echo $i++; ?></th>
                     <td><?php echo $row['emri'] ?></td>
-                    <td><?php echo $row['mbiemri'] ?></td>
-                    <td><?php echo $row['nr_personal'] ?></td>
+                    <td><?php echo $row['emri'] ?></td>
+                    <td><?php echo $row['data_e_rezervimit']; ?></td>
+                    <td><?php echo $row['data_e_kthimit']; ?></td>
+                    <td><?php echo $row['komente'] ?></td>
 
-                    <td><?php echo $row['telefoni'] ?></td>
-                    <td><?php echo $row['adresa'] ?></td>
-
-                    <td class="text-center"><a href="" class="btn text-light btn-warning btn-sm  px-3"><i
-                                class="far fa-edit"></i></a>
+                    <td class="text-center"><a
+                            href="shtoModifiko_Rezervim.php?rezervimiid=<?php echo $row['rezervimiid'] ?>"
+                            class="btn text-light btn-warning btn-sm  px-3"><i class="far fa-edit"></i></a>
                     </td>
-                    <td class="text-center"> <a type="button" class="btn btn-danger btn-sm px-3">
+                    <td class="text-center"> <a onclick="return confirm('confirm the deletion?')"
+                            href="?rezervimiid=<?php echo $row['rezervimiid']?>" type="button"
+                            class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>
                         </a></td>
 
@@ -88,7 +104,8 @@
             </tbody>
 
         </table>
-        <a href="" id="shtoklient" class="btn px-3 float-end"><i class="fas fa-user-plus"></i> Shto Rezervim</a>
+        <a href="shtoModifiko_Rezervim.php" id="shtoklient" class="btn px-3 float-end"><i class="fas fa-user-plus"></i>
+            Shto Rezervim</a>
     </div>
     <!-- ========== End tabela ========== -->
     <!-- ========== Start footer ========== -->

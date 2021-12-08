@@ -1,3 +1,4 @@
+<?php  include_once './includes/sqlFunctions.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,10 +36,22 @@
     #login:hover {
         opacity: 0.8;
     }
+
+    .error {
+        color: lightcoral;
+    }
     </style>
 
     <title>Document</title>
 </head>
+
+<?php
+if(isset($_POST['login'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    login($username, $password);
+}
+?>
 
 <body>
 
@@ -49,17 +62,19 @@
     <!-- ========== Start main ========== -->
     <div class="login-page">
         <div class="container d-flex justify-content-center">
-            <form class="px-4" action="">
+            <form class="px-4" method="POST" id="login-form">
                 <h2 class="text-white text-center pt-4 mb-5">Login</h2>
                 <div class="mb-4">
-                    <input class="form-control" type="text" placeholder="Username">
+                    <input class="form-control" type="text" placeholder="Username" name="username" id="username">
+
                 </div>
                 <div class="mb-4">
-                    <input class="form-control" type="password" placeholder="Password">
+                    <input class="form-control" type="password" placeholder="Password" name="password" id="password">
+
                 </div>
                 <p class="text-light float-end">Not a user yet? <a href="register.php" id="register"> Register</a> </p>
                 <div class="clearfix"></div>
-                <button type="submit" class="w-100 btn mt-4" id="login">Login</button>
+                <button type="submit" name="login" class="w-100 btn mt-4" id="login">Login</button>
             </form>
 
         </div>
@@ -67,6 +82,10 @@
     <!-- ========== End main ========== -->
 
 
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+    <script src="./script/validation.js"></script>
 
 
 

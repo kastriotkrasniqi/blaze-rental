@@ -28,6 +28,18 @@
     <title>Document</title>
 </head>
 
+<?php 
+
+                    if(isset($_GET['automjetiid'])){
+                        $automjetiid=$_GET['automjetiid'];
+
+                        fshiAutomjetin($automjetiid);
+                        header('location:automjetet.php');
+                    }
+            
+            
+            ?>
+
 <body>
     <!-- ========== Start header ========== -->
     <?php include './includes/header.php'; ?>
@@ -73,10 +85,13 @@
                     <td><?php echo $row['pershkrimi'] ?></td>
                     <td><?php echo $row['kostoja'] ?></td>
 
-                    <td class="text-center"><a href="" class="btn text-light btn-warning btn-sm  px-3"><i
-                                class="far fa-edit"></i></a>
+                    <td class="text-center"><a
+                            href="shtoModifiko_Automjetet.php?automjetiid=<?php echo $row['automjetiid']; ?>"
+                            class="btn text-light btn-warning btn-sm  px-3"><i class="far fa-edit"></i></a>
                     </td>
-                    <td class="text-center"> <a type="button" class="btn btn-danger btn-sm px-3">
+                    <td class="text-center"> <a onClick="return confirm('Please confirm deletion');"
+                            href="?automjetiid=<?php echo $row['automjetiid']; ?>" type="button"
+                            class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>
                         </a></td>
 
@@ -86,7 +101,8 @@
             </tbody>
 
         </table>
-        <a href="" id="shtoklient" class="btn px-3 float-end"><i class="fas fa-user-plus"></i> Shto Automjet</a>
+        <a href="shtoModifiko_Automjetet.php" id="shtoklient" class="btn px-3 float-end mt-3"><i
+                class="fas fa-user-plus"></i> Shto Automjet</a>
     </div>
     <!-- ========== End tabela ========== -->
     <!-- ========== Start footer ========== -->

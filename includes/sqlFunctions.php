@@ -24,15 +24,32 @@ function merrKlientet(){
     return $result;
 }
 
+function merrKlientiid($klientiid){
+    $dbcon=connection();
+    $sql="SELECT * FROM klientet where klientiid='$klientiid'";
+    $result=mysqli_query($dbcon,$sql);
+    return $result;
+}
+
 function shtoKlient($emri, $mbiemri, $email, $telefoni, $nr_personal, $adresa){
     $dbcon = connection();
-    $sql = "INSERT INTO klientet(emri, mbiemri, email, nr_personal, telefoni, adresa, username, password)";
-    $sql.="VALUES('$emri','$mbiemri','$email',$nr_personal, '$telefoni','$adresa','user','password')";
+    $sql = "INSERT INTO klientet(emri, mbiemri, email, nr_personal, telefoni, adresa)";
+    $sql.="VALUES('$emri','$mbiemri','$email',$nr_personal, '$telefoni','$adresa')";
     $result = mysqli_query($dbcon, $sql);
     if($result){
         header('Location: klientet.php');
     }
 }
+
+    function fshiKlient($klientiid){
+        $dbcon=connection();
+        $sql="DELETE from klientet where klientiid='$klientiid'";
+        $result=mysqli_query($dbcon,$sql);
+        if($result){
+            header('Location: klientet.php');
+
+        }
+    }
 
 function merrKlientinId($klientiid){
     $dbcon = connection();
@@ -41,7 +58,7 @@ function merrKlientinId($klientiid){
     return $result;
 }
 
-function modifikoKlient($klientiid, $emri, $mbiemri, $email, $telefoni, $nr_personal, $adresa){
+function modifikoKlient($emri, $mbiemri, $email, $telefoni, $nr_personal, $adresa,$klientiid){
     $dbcon = connection();
     $sql = "UPDATE klientet SET emri = '$emri', mbiemri = '$mbiemri', email = '$email', telefoni = '$telefoni',
             nr_personal = $nr_personal, adresa = '$adresa' WHERE klientiid = $klientiid ";
@@ -57,6 +74,13 @@ function merrKategorit(){
     return $result;
 }
 
+function merrKategoriaid($kategoriaid){
+    $dbcon=connection();
+    $sql="SELECT * FROM kategorite where kategoriaid='$kategoriaid'";
+    $result=mysqli_query($dbcon,$sql);
+    return $result;
+}
+
 function shtoKategori($emri, $pershkrimi){
     $dbcon = connection();
     $sql = "INSERT INTO kategorite(emri, pershkrimi) VALUES('$emri', '$pershkrimi')";
@@ -64,6 +88,23 @@ function shtoKategori($emri, $pershkrimi){
     if($result){
         header('Location: kategorite.php');
     }
+}
+function modifikoKategori($emri,$pershkrimi,$kategoriaid){
+    $dbcon=connection();
+    $sql="UPDATE kategorite SET emri='$emri' , pershkrimi='$pershkrimi' WHERE kategoriaid='$kategoriaid'";
+    $result=mysqli_query($dbcon,$sql);
+    if($result){
+        header('Location: kategorite.php');
+    }
+}
+
+function fshiKategori($kategoriaid){
+    $dbcon=connection();
+    $sql="DELETE FROM kategorite where kategoriaid='$kategoriaid'";
+    $result=mysqli_query($dbcon,$sql);
+    if($result){
+        header('Location: kategorite.php');
+}
 }
 function merrAutomjetet(){
     $dbcon = connection();
@@ -84,6 +125,13 @@ function merrAutomjetinId($automjetiid){
     $dbcon = connection();
     $sql = "SELECT * FROM automjetet WHERE automjetiid = $automjetiid";
     $result = mysqli_query($dbcon, $sql);
+    return $result;
+}
+
+function fshiAutomjetin($automjetiid){
+    $dbcon =connection();
+    $sql="DELETE FROM automjetet WHERE automjetiid = $automjetiid";
+    $result=mysqli_query($dbcon,$sql) or die(mysqli_error($dbcon));
     return $result;
 }
 
@@ -129,7 +177,35 @@ function login($username, $password){
 
 function merrRezervimetId($klientiid){
     $dbcon = connection();
-    $sql = "SELECT r.*, a.emri FROM rezervimet r INNER JOIN automjetet a ON r.automjetiid = a.automjetiid WHERE klientiid = $klientiid";
+    $sql = "SELECT r.*, a.emri FROM rezervimet r INNER JOIN automjetet a ON r.automjetiid = a.automjetiid  WHERE klientiid = $klientiid";
     $result = mysqli_query($dbcon, $sql);
     return $result;
+}
+
+
+
+function fshiRezervimet($rezervimiid){
+    $dbcon=connection();
+    $sql="DELETE FROM rezervimet where rezervimiid='$rezervimiid'";
+    $result=mysqli_query($dbcon,$sql);
+    return $result;
+}
+
+function shtoRezervim($emri,$automjeti,$datarezervimit,$datakthimit,$komente){
+    $dbcon=connection();
+    $sql="INSERT INTO rezervimet(klientiid,automjetiid,data_e_rezervimit,data_e_kthimit,komente) VALUES('$emri','$automjeti','$datarezervimit','$datakthimit','$komente')";
+    $result=mysqli_query($dbcon,$sql) or die(mysqli_error($dbcon));
+   if($result){
+    header('location:rezervimet.php');
+   }
+}
+
+function modifikoRezervim($emri,$automjeti,$datarezervimit,$datakthimit,$komente,$rezervimiid){
+$dbcon=connection();
+$sql="UPDATE rezervimet SET klientiid='$emri',automjetiid='$automjeti',data_e_rezervimit='$datarezervimit',data_e_kthimit='$datakthimit',komente='$komente' where rezervimiid='$rezervimiid'";
+$result=mysqli_query($dbcon,$sql) or die(mysqli_error($dbcon));
+if($result){
+ header('location:rezervimet.php');
+}
+
 }
