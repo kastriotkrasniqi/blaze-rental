@@ -69,8 +69,10 @@
                     <th scope="col">Nr Regjistrimit</th>
                     <th scope="col">Pershkrimi</th>
                     <th scope="col">Kostoja</th>
+                    <?php if(isset($_SESSION['klientiid'])): ?>
                     <th scope="col">Edit</th>
                     <th scope="col">Delete</th>
+                    <?php endif; ?>
 
                 </tr>
             </thead>
@@ -84,7 +86,7 @@
                     <td><?php echo $row['nr_regjistrimit'] ?></td>
                     <td><?php echo $row['pershkrimi'] ?></td>
                     <td><?php echo $row['kostoja'] ?></td>
-
+                    <?php if(isset($_SESSION['klientiid'])): ?>
                     <td class="text-center"><a
                             href="shtoModifiko_Automjetet.php?automjetiid=<?php echo $row['automjetiid']; ?>"
                             class="btn text-light btn-warning btn-sm  px-3"><i class="far fa-edit"></i></a>
@@ -94,15 +96,17 @@
                             class="btn btn-danger btn-sm px-3">
                             <i class="fas fa-times"></i>
                         </a></td>
-
+                    <?php endif; ?>
                 </tr>
                 <?php endwhile; ?>
 
             </tbody>
 
         </table>
+        <?php if(isset($_SESSION['klientiid'])): ?>
         <a href="shtoModifiko_Automjetet.php" id="shtoklient" class="btn px-3 float-end mt-3"><i
                 class="fas fa-user-plus"></i> Shto Automjet</a>
+        <?php endif; ?>
     </div>
     <!-- ========== End tabela ========== -->
     <!-- ========== Start footer ========== -->
