@@ -75,14 +75,16 @@
 
                 </tr>
             </thead>
-            <?php $rezervimet = merrRezervimetId($_SESSION['klientiid']); $i=1;  ?>
+            <?php $rezervimet = merrRezervimetId($_SESSION['klientiid']);  $i=1;  ?>
 
 
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($rezervimet))  : ?>
+                <?php // $klientiid=merrKlientiid($_SESSION['klientiid']);
+                   // $klienti=mysqli_fetch_assoc($klientiid) ?> 
                 <tr>
                     <th scope="row"><?php echo $i++; ?></th>
-                    <td><?php echo $row['emri'] ?></td>
+                    <td><?php echo $row['klienti'] ?></td>
                     <td><?php echo $row['emri'] ?></td>
                     <td><?php echo $row['data_e_rezervimit']; ?></td>
                     <td><?php echo $row['data_e_kthimit']; ?></td>

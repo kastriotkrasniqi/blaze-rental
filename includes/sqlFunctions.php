@@ -177,11 +177,18 @@ function login($username, $password){
 
 function merrRezervimetId($klientiid){
     $dbcon = connection();
-    $sql = "SELECT r.*, a.emri FROM rezervimet r INNER JOIN automjetet a ON r.automjetiid = a.automjetiid  WHERE klientiid = $klientiid";
+    $sql = "SELECT r.*, a.emri,k.emri as klienti FROM rezervimet as r INNER JOIN automjetet as a ON r.automjetiid = a.automjetiid INNER JOIN klientet as k ON r.klientiid=k.klientiid WHERE r.klientiid = '$klientiid'";
     $result = mysqli_query($dbcon, $sql);
     return $result;
 }
+function merrRezervimet(){
+    $dbcon = connection();
+    $sql = "SELECT r.*, a.emri,k.emri as klientiemri FROM rezervimet as r INNER JOIN automjetet as a ON r.automjetiid = a.automjetiid INNER JOIN klientet as k ON r.klientiid=k.klientiid";
+    $result = mysqli_query($dbcon, $sql);
+    return $result;
 
+
+}
 
 
 function fshiRezervimet($rezervimiid){
